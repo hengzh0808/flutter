@@ -57,8 +57,11 @@ class FlutterExtension {
 
 buildscript {
     repositories {
-        google()
-        mavenCentral()
+        // google()
+        // mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
     }
     dependencies {
         /* When bumping, also update ndkVersion above. */
@@ -81,7 +84,8 @@ android {
 apply plugin: FlutterPlugin
 
 class FlutterPlugin implements Plugin<Project> {
-    private static final String DEFAULT_MAVEN_HOST = "https://storage.googleapis.com";
+    // private static final String DEFAULT_MAVEN_HOST = "https://storage.googleapis.com";
+    private static final String DEFAULT_MAVEN_HOST = "https://storage.flutter-io.cn";
 
     /** The platforms that can be passed to the `--Ptarget-platform` flag. */
     private static final String PLATFORM_ARM32  = "android-arm";
@@ -176,6 +180,10 @@ class FlutterPlugin implements Plugin<Project> {
                 maven {
                     url repository
                 }
+
+                maven { url 'https://maven.aliyun.com/repository/google' }
+                maven { url 'https://maven.aliyun.com/repository/jcenter' }
+                maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
             }
         }
 
